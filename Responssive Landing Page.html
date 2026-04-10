@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Landing Page</title>
+<style>
+body { margin:0; font-family:Arial; }
+
+nav {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  transition: 0.3s;
+}
+nav.scrolled { background:black; color:white; }
+
+ul { display:flex; list-style:none; }
+li { margin:0 10px; }
+
+section {
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:30px;
+}
+
+#home { background:teal; }
+#about { background:purple; }
+#contact { background:orange; }
+</style>
+</head>
+
+<body>
+
+<nav id="nav">
+  <h3>MySite</h3>
+  <ul>
+    <li>Home</li>
+    <li>About</li>
+    <li>Contact</li>
+  </ul>
+</nav>
+
+<section id="home">Home</section>
+<section id="about">About</section>
+<section id="contact">Contact</section>
+
+<script>
+window.addEventListener("scroll", ()=>{
+  document.getElementById("nav")
+    .classList.toggle("scrolled", window.scrollY>50);
+});
+</script>
+
+</body>
+</html>

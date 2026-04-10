@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>To-Do</title>
+<style>
+body { font-family:Arial; text-align:center; }
+li { margin:5px; }
+</style>
+</head>
+
+<body>
+
+<h2>To-Do List</h2>
+<input id="task"><button onclick="add()">Add</button>
+
+<ul id="list"></ul>
+
+<script>
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+function save(){
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function render(){
+  list.innerHTML="";
+  tasks.forEach((t,i)=>{
+    let li=document.createElement("li");
+    li.innerHTML=`${t} <button onclick="del(${i})">❌</button>`;
+    list.appendChild(li);
+  });
+}
+
+function add(){
+  if(task.value==="") return;
+  tasks.push(task.value);
+  task.value="";
+  save(); render();
+}
+
+function del(i){
+  tasks.splice(i,1);
+  save(); render();
+}
+
+render();
+</script>
+
+</body>
+</html>
